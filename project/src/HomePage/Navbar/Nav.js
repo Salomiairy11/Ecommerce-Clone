@@ -31,7 +31,6 @@ export default function Nav()
         <p className="username">
           Hello,{userName.name}
         </p>
-        <button className="my_orders">My Orders</button>
         <button className="cart">
           <img src={cart} alt="not found"></img>
         </button>
