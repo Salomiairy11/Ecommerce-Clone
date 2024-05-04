@@ -5,7 +5,7 @@ import './Card.css'
 import IndividualFilteredProduct from './IndividualFilteredProduct.js'
 
 
-export default function Products() {
+export default function Products({handleClick}) {
   const [allProduct, setAllProduct] = React.useState([])
 
   React.useEffect(() => {
@@ -52,22 +52,23 @@ export default function Products() {
     setFilteredProducts([])
   }
 
+  
   return (
     <div className="categ">
-      <div className='product_list'>
+      <div className="product_list">
         <h2>Categories</h2>
-        <div className='item_list'>
-        {spans.map((individualSpan, index) => (
-          <span
-            key={index}
-            id={individualSpan.id}
-            onClick={() => handleChange(individualSpan)}
-            className="category"
-          >
-            {individualSpan.text}
-          </span>
-        ))}
-      </div>
+        <div className="item_list">
+          {spans.map((individualSpan, index) => (
+            <span
+              key={index}
+              id={individualSpan.id}
+              onClick={() => handleChange(individualSpan)}
+              className="category"
+            >
+              {individualSpan.text}
+            </span>
+          ))}
+        </div>
       </div>
       <div className="elements">
         {filteredProducts.length > 0 && (
@@ -77,41 +78,27 @@ export default function Products() {
             </a>
             <h1 className="text-center">{category}</h1>
             <div className="probox">
-              {filteredProducts.map((pro) => (
+              {filteredProducts.map((individualFilteredProduct) => (
                 <IndividualFilteredProduct
-                  key={pro.id}
-                  id={pro.id}
-                  title={pro.title}
-                  discount={pro.discountPercentage}
-                  price={pro.price}
-                  category={pro.category}
+                  key={individualFilteredProduct.id}
+                  individualFilteredProduct={individualFilteredProduct}
                 />
               ))}
             </div>
           </div>
         )}
-        {filteredProducts.length < 1 &&
-         (<div className='elem'>
-          <h2>All Products</h2>
-          <div className='elem2'>
-          {
-             allProduct.map((pro) => {
-            return (
-              <Card
-                key={pro.id}
-                id={pro.id}
-                title={pro.title}
-                discount={pro.discountPercentage}
-                price={pro.price}
-                category={pro.category}
-              />
-            )
-          })
-          }
+        {filteredProducts.length < 1 && (
+          <div className="elem">
+            <h2>All Products</h2>
+            <div className="elem2">
+              {allProduct.map((card) => {
+                return (
+                  <Card key={card.id} card={card} handleClick={handleClick} />
+                )
+              })}
+            </div>
           </div>
-          </div>
-         )
-         }
+        )}
       </div>
     </div>
   )

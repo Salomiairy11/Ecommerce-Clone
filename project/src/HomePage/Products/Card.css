@@ -29,6 +29,11 @@ body{
     font-weight: bolder;
 }
 
+.cart{
+    font-size: 1.8rem;
+    color: rgb(53, 173, 107);
+}
+
 .elem h2{
     width:100%;
     text-align: center;

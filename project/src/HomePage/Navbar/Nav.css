@@ -105,3 +105,10 @@
     margin-left: 35px;
 }
 
+.size{
+    font-weight: bolder;
+    font-size: 1.1rem;
+    color:white;
+    background-color: red;
+    border-radius: 7px;
+}

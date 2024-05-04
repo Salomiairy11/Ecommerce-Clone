@@ -1,0 +1,13 @@
+.warning{
+    color: white;
+    background-color: rgb(240, 49, 49);
+    height:60px;
+    width:210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    padding-left: 12px;
+    margin-left: 50%;
+    margin-top: 2%;
+}
