@@ -9,6 +9,8 @@ export default function App()
     const [show, setShow] = React.useState(true);
     const [cart, setCart] = React.useState([]);
     const [warning, setWarning] = React.useState(false)
+    const [searchTerm, setSearchTerm] = React.useState("")
+   
 
     const handleClick = (item) => {
      let isPresent = false
@@ -41,17 +43,29 @@ export default function App()
       setCart([...tempArr])
     }
 
+    const searchHandler = (searchTerm)=>{
+       setSearchTerm(searchTerm)
+    }
+
     return (
       <div>
-        <Nav size={cart.length} setShow={setShow}
+        <Nav
+          size={cart.length}
+          setShow={setShow}
+          searchTerm={searchTerm}
+          searchHandler={searchHandler}
         />
         {warning && (
           <div className="warning">Item is already added to your cart</div>
         )}
         {show ? (
-          <Products handleClick={handleClick} />
+          <Products
+            handleClick={handleClick}
+            searchTerm={searchTerm}
+            searchHandler={searchHandler}
+          />
         ) : (
-          <Cart cart={cart} setCart={setCart} handleChange={handleChange}/>
+          <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
         )}
       </div>
     )

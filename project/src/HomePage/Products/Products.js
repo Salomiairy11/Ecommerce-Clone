@@ -4,9 +4,9 @@ import Card from './Card.js'
 import './Card.css'
 import IndividualFilteredProduct from './IndividualFilteredProduct.js'
 
-
-export default function Products({handleClick}) {
+export default function Products({ handleClick, searchTerm}) {
   const [allProduct, setAllProduct] = React.useState([])
+  const [searchresults, setSearchResults] = React.useState('')
 
   React.useEffect(() => {
     fetch('https://dummyjson.com/products')
@@ -17,7 +17,6 @@ export default function Products({handleClick}) {
   }, [])
 
   const [filteredProducts, setFilteredProducts] = React.useState([])
-
 
   //category state
   const [category, setCategory] = React.useState('')
@@ -32,8 +31,6 @@ export default function Products({handleClick}) {
     { id: 'groceries', text: 'groceries' },
     { id: 'home-decoration', text: 'home-decoration' },
   ])
-
-
 
   //set category and active status
   const handleChange = (individualSpan) => {
@@ -52,7 +49,22 @@ export default function Products({handleClick}) {
     setFilteredProducts([])
   }
 
-  
+ 
+
+   React.useEffect(() => {
+     if (searchTerm.trim() === '') {
+       setSearchResults(allProduct)
+     } else {
+       const newProductList = allProduct.filter((product) => {
+         return Object.values(product)
+           .join(' ')
+           .toLowerCase()
+           .includes(searchTerm.toLowerCase())
+       })
+       setSearchResults(newProductList)
+     }
+   }, [searchTerm])
+
   return (
     <div className="categ">
       <div className="product_list">
@@ -87,16 +99,32 @@ export default function Products({handleClick}) {
             </div>
           </div>
         )}
-        {filteredProducts.length < 1 && (
-          <div className="elem">
-            <h2>All Products</h2>
-            <div className="elem2">
-              {allProduct.map((card) => {
-                return (
-                  <Card key={card.id} card={card} handleClick={handleClick} />
-                )
-              })}
-            </div>
+        {filteredProducts.length < 1 &&
+          searchresults.length < 1 &&(
+              <div className="elem">
+                <h2>All Products</h2>
+                <div className="elem2">
+                  {allProduct.map((card) => {
+                    return (
+                      <Card
+                        key={card.id}
+                        card={card}
+                        handleClick={handleClick}
+                      />
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+      </div>
+      <div className="products">
+        {searchresults.length > 1 && (
+          <div className="elem2">
+            {searchresults.map((card) => {
+              return (
+                <Card key={card.id} card={card} handleClick={handleClick} />
+              )
+            })}
           </div>
         )}
       </div>
