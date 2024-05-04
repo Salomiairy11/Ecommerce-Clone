@@ -1,11 +1,14 @@
 import React from 'react'
 import Nav from './HomePage/Navbar/Nav.js'
-import Products from './HomePage/Products/Products.js'
+import Products from './/HomePage/Products/Products.js'
 import Cart from './HomePage/Products/Cart.js'
 import './App.css'
+import Slider from './HomePage/Slider.js'
 
 export default function App()
 {
+
+
     const [show, setShow] = React.useState(true);
     const [cart, setCart] = React.useState([]);
     const [warning, setWarning] = React.useState(false)
@@ -55,15 +58,19 @@ export default function App()
           searchTerm={searchTerm}
           searchHandler={searchHandler}
         />
+       
         {warning && (
           <div className="warning">Item is already added to your cart</div>
         )}
         {show ? (
+          <div>
+          <Slider />
           <Products
             handleClick={handleClick}
             searchTerm={searchTerm}
             searchHandler={searchHandler}
           />
+          </div>
         ) : (
           <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
         )}
