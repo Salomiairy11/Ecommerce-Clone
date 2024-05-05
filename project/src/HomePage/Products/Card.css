@@ -141,6 +141,7 @@ body{
     margin-left: 2%;
      border-radius: 9px;
      background-color: white;
+     margin-right: 2%;
 }
 
 .product_list h2{
@@ -166,3 +167,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.elem3{
+    display: flex;
+    flex-wrap: wrap;
+}
+

@@ -3,6 +3,7 @@ import Card from './Card.js'
 //import Categories from './Categories.js'
 import './Card.css'
 import IndividualFilteredProduct from './IndividualFilteredProduct.js'
+import Slider from './Slider.js'
 
 export default function Products({ handleClick, searchTerm}) {
   const [allProduct, setAllProduct] = React.useState([])
@@ -99,27 +100,27 @@ export default function Products({ handleClick, searchTerm}) {
             </div>
           </div>
         )}
-        {filteredProducts.length < 1 &&
-          searchresults.length < 1 &&(
-              <div className="elem">
-                <h2>All Products</h2>
-                <div className="elem2">
-                  {allProduct.map((card) => {
-                    return (
-                      <Card
-                        key={card.id}
-                        card={card}
-                        handleClick={handleClick}
-                      />
-                    )
-                  })}
-                </div>
+        {filteredProducts.length < 1 && searchresults.length < 1 && (
+          <div>
+            <div>
+              <Slider />
+            </div>
+            <div className="elem">
+              <h2>All Products</h2>
+              <div className="elem2">
+                {allProduct.map((card) => {
+                  return (
+                    <Card key={card.id} card={card} handleClick={handleClick} />
+                  )
+                })}
               </div>
-            )}
+            </div>
+          </div>
+        )}
       </div>
       <div className="products">
         {searchresults.length > 1 && (
-          <div className="elem2">
+          <div className="elem3">
             {searchresults.map((card) => {
               return (
                 <Card key={card.id} card={card} handleClick={handleClick} />

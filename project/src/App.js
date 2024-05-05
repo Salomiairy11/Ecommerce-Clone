@@ -3,7 +3,7 @@ import Nav from './HomePage/Navbar/Nav.js'
 import Products from './/HomePage/Products/Products.js'
 import Cart from './HomePage/Products/Cart.js'
 import './App.css'
-import Slider from './HomePage/Slider.js'
+
 
 export default function App()
 {
@@ -64,7 +64,6 @@ export default function App()
         )}
         {show ? (
           <div>
-          <Slider />
           <Products
             handleClick={handleClick}
             searchTerm={searchTerm}
