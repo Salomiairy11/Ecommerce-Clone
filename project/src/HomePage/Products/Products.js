@@ -5,7 +5,7 @@ import './Card.css'
 import IndividualFilteredProduct from './IndividualFilteredProduct.js'
 import Slider from './Slider.js'
 
-export default function Products({ handleClick, searchTerm}) {
+export default function Products({ handleClick, searchTerm }) {
   const [allProduct, setAllProduct] = React.useState([])
   const [searchresults, setSearchResults] = React.useState('')
 
@@ -50,21 +50,19 @@ export default function Products({ handleClick, searchTerm}) {
     setFilteredProducts([])
   }
 
- 
-
-   React.useEffect(() => {
-     if (searchTerm.trim() === '') {
-       setSearchResults(allProduct)
-     } else {
-       const newProductList = allProduct.filter((product) => {
-         return Object.values(product)
-           .join(' ')
-           .toLowerCase()
-           .includes(searchTerm.toLowerCase())
-       })
-       setSearchResults(newProductList)
-     }
-   }, [searchTerm])
+  React.useEffect(() => {
+    if (searchTerm.trim() === '') {
+      setSearchResults(allProduct)
+    } else {
+      const newProductList = allProduct.filter((product) => {
+        return Object.values(product)
+          .join(' ')
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      })
+      setSearchResults(newProductList)
+    }
+  }, [searchTerm])
 
   return (
     <div className="categ">
@@ -102,12 +100,10 @@ export default function Products({ handleClick, searchTerm}) {
         )}
         {filteredProducts.length < 1 && searchresults.length < 1 && (
           <div>
-            <div>
-              <Slider />
-            </div>
+            <Slider />
             <div className="elem">
-              <h2>All Products</h2>
               <div className="elem2">
+                <h2>All Products</h2>
                 {allProduct.map((card) => {
                   return (
                     <Card key={card.id} card={card} handleClick={handleClick} />
@@ -117,13 +113,13 @@ export default function Products({ handleClick, searchTerm}) {
             </div>
           </div>
         )}
-      </div>
-      <div className="products">
         {searchresults.length > 1 && (
           <div className="elem3">
             {searchresults.map((card) => {
               return (
-                <Card key={card.id} card={card} handleClick={handleClick} />
+                <div className="search_products">
+                  <Card key={card.id} card={card} handleClick={handleClick} />
+                </div>
               )
             })}
           </div>

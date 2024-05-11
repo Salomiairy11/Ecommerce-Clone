@@ -4,12 +4,11 @@ import './SignIn.css'
 import { useNavigate, Link } from 'react-router-dom'
 
 export default function NewAcc() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [formData, setFormData] = React.useState({
-    name:'',
+    name: '',
     email: '',
     password: '',
-
   })
 
   function handleChange(event) {
@@ -21,9 +20,9 @@ export default function NewAcc() {
     })
   }
 
-  function handleSubmit(event){
-    event.preventDefault();
-    localStorage.setItem("user", JSON.stringify(formData));
+  function handleSubmit(event) {
+    event.preventDefault()
+    localStorage.setItem('user', JSON.stringify(formData))
     navigate('/SignIn')
   }
 
@@ -76,7 +75,9 @@ export default function NewAcc() {
         </button>
       </form>
       <br></br>
-      <p>Already have an account? <Link to="/SignIn">LogIn  Here</Link></p>
+      <p>
+        Already have an account? <Link to="/SignIn">LogIn Here</Link>
+      </p>
     </div>
   )
 }

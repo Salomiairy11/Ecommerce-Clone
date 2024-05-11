@@ -1,11 +1,11 @@
-import React from "react"
-import logo from "./navImages/logo.png"
-import search from "./navImages/search.png"
-import "./Nav.css"
-import { useNavigate } from "react-router-dom"
-import { useRef } from "react"
+import React from 'react'
+import logo from './navImages/logo.png'
+import search from './navImages/search.png'
+import './Nav.css'
+import { useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
 
-export default function Nav({ size, setShow, searchTerm, searchHandler}) {
+export default function Nav({ size, setShow, searchTerm, searchHandler }) {
   const navigate = useNavigate()
   const userName = JSON.parse(localStorage.getItem('user'))
 
