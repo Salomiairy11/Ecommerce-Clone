@@ -52,7 +52,6 @@ export default function App() {
         searchTerm={searchTerm}
         searchHandler={searchHandler}
       />
-
       {warning && (
         <div className="warning">Item is already added to your cart</div>
       )}
