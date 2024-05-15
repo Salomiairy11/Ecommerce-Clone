@@ -59,10 +59,12 @@ export default function Products({ handleClick, searchTerm }) {
           .join(' ')
           .toLowerCase()
           .includes(searchTerm.toLowerCase())
+
       })
       setSearchResults(newProductList)
     }
   }, [searchTerm])
+  
 
   return (
     <div className="categ">

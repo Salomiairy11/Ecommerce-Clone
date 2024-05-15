@@ -12,6 +12,7 @@ export default function App() {
   const [searchTerm, setSearchTerm] = React.useState('')
 
   const handleClick = (item) => {
+
     let isPresent = false
     cart.forEach((product) => {
       //checking if the id of the item which we  want to add to cart is already present in the cart state
@@ -24,6 +25,7 @@ export default function App() {
       }, 4000)
       return
     }
+    
 
     setCart([...cart, { ...item, amount: 1 }])
   }
