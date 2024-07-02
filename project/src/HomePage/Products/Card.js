@@ -3,19 +3,18 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Card({card,handleClick})
 {
-  const { id, title, discountPercentage, price } = card;
+  const { id, title, discountPercentage, price, thumbnail} = card;
   const state = localStorage.getItem('loggedin');
   const navigate = useNavigate();
 
   function handleCart(){
     navigate('/SignIn');
   }
-
-        let imgsrc
-        imgsrc = `https://cdn.dummyjson.com/product-images/${id}/1.jpg`;
+        //let imgsrc
+        //imgsrc = `https://cdn.dummyjson.com/product-images/${id}/1.jpg`;
       return (
         <div className="card">
-          <img className="pic" src={imgsrc} alt="not found"></img>
+          <img className="pic" src={thumbnail} alt="not found"></img>
           <div className="for_button">
             <div className="desc">
               <p className="name">{title}</p>

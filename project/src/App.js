@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from './HomePage/Navbar/Nav.js'
+import Slider from './HomePage/Products/Slider.js'
 import Products from './/HomePage/Products/Products.js'
 import Cart from './HomePage/Products/Cart.js'
 import Footer from './HomePage/Footer/Footer.js'
@@ -57,6 +58,7 @@ export default function App() {
       {warning && (
         <div className="warning">Item is already added to your cart</div>
       )}
+      <Slider />
       {show ? (
         <div>
           <Products

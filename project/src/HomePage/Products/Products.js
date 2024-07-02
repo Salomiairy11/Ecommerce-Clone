@@ -1,20 +1,33 @@
 import React from 'react'
 import Card from './Card.js'
-//import Categories from './Categories.js'
 import './Card.css'
 import IndividualFilteredProduct from './IndividualFilteredProduct.js'
-import Slider from './Slider.js'
+
 
 export default function Products({ handleClick, searchTerm }) {
   const [allProduct, setAllProduct] = React.useState([])
   const [searchresults, setSearchResults] = React.useState('')
+  const [categories, setCategories] = React.useState([])
 
   React.useEffect(() => {
+    // Fetch data from the API
     fetch('https://dummyjson.com/products')
       .then((res) => res.json())
       .then((data) => {
         setAllProduct(data.products)
+
+        // Extract categories
+        const categorySet = new Set()
+        data.products.forEach((product) => {
+          if (product.category) {
+            categorySet.add(product.category)
+          }
+        })
+
+        // Convert set to array and set the state
+        setCategories(Array.from(categorySet))
       })
+      .catch((error) => console.error('Error fetching data:', error))
   }, [])
 
   const [filteredProducts, setFilteredProducts] = React.useState([])
@@ -22,23 +35,10 @@ export default function Products({ handleClick, searchTerm }) {
   //category state
   const [category, setCategory] = React.useState('')
 
-  //categories list rendering using span tag
-
-  const [spans] = React.useState([
-    { id: 'smartphones', text: 'smartphones' },
-    { id: 'laptops', text: 'laptops' },
-    { id: 'fragrances', text: 'fragrances' },
-    { id: 'skincare', text: 'skincare' },
-    { id: 'groceries', text: 'groceries' },
-    { id: 'home-decoration', text: 'home-decoration' },
-  ])
-
-  //set category and active status
-  const handleChange = (individualSpan) => {
-    setCategory(individualSpan.text)
-    filterFunction(individualSpan.text)
+  const handleChange = (category) => {
+    setCategory(category)
+    filterFunction(category)
   }
-
   const filterFunction = (text) => {
     const filter = allProduct.filter((product) => product.category === text)
     setFilteredProducts(filter)
@@ -59,29 +59,26 @@ export default function Products({ handleClick, searchTerm }) {
           .join(' ')
           .toLowerCase()
           .includes(searchTerm.toLowerCase())
-
       })
       setSearchResults(newProductList)
     }
   }, [searchTerm])
-  
 
   return (
-    <div className="categ">
+    <section className="categ">
       <div className="product_list">
-        <h2>Categories</h2>
-        <div className="item_list">
-          {spans.map((individualSpan, index) => (
-            <span
+        <p>Categories</p>
+        <ul className="item_list">
+          {categories.map((category, index) => (
+            <li
               key={index}
-              id={individualSpan.id}
-              onClick={() => handleChange(individualSpan)}
+              onClick={() => handleChange(category)}
               className="category"
             >
-              {individualSpan.text}
-            </span>
+              {category}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
       <div className="elements">
         {filteredProducts.length > 0 && (
@@ -102,7 +99,6 @@ export default function Products({ handleClick, searchTerm }) {
         )}
         {filteredProducts.length < 1 && searchresults.length < 1 && (
           <div>
-            <Slider />
             <div className="elem">
               <div className="elem2">
                 <h2>All Products</h2>
@@ -127,6 +123,6 @@ export default function Products({ handleClick, searchTerm }) {
           </div>
         )}
       </div>
-    </div>
+    </section>
   )
 }

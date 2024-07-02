@@ -1,17 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-}
 
 .Cart{
-    width:60%;
-    height:60%;
     align-content: center;
 }
 
 .cart_box img{
-    width: 60px;
-    height: 60px;
+    width: 50%;
+    object-fit: contain;
 }
 
 .cart_box{

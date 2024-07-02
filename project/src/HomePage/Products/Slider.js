@@ -73,6 +73,7 @@ export default function Slider(){
         for (let i = 10; i > 0; i--) {
           setTimeout(() => {
             if (count === 0) {
+
               setForward(true)
             } else {
               setCount(count - 1)
@@ -89,7 +90,6 @@ export default function Slider(){
             <img src={img1}></img>
           </div>
           <div className="image">
-            {' '}
             <img src={img2}></img>
           </div>
           <div className="image">
@@ -119,4 +119,4 @@ export default function Slider(){
         </div>
       </div>
     )
-}
+  }

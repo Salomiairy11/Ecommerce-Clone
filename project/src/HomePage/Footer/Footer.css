@@ -1,125 +1,90 @@
-.imagee {
+/*Main footer Css*/
+
+.footer_imagee {
     background-image:url('./footer.webp');
     background-repeat: no-repeat;
     width:100%;
-    height: 300px;
+    margin-top:1rem;
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
     color:white;
-    margin-top: 4%;
 }
 
 .img-overlay{
-    width:100%;
-    height:300px;
-    background-color: rgba(17, 160, 29, 0.37);
-}
-
-.contact{
-    text-align: right;
+    background-color: rgba(60, 151, 255, 0.349);
+    overflow-x: hidden;
 }
 
 .row{
-    /* margin: 146px 37px 164px; */
-    margin-left: 5%;
     display:flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap:wrap;
-    width: 1114px;
-    height: 214.42px;
-    top: 136px;
-    left: 165px;
+    justify-content: space-evenly;
     background-color: 0,0,0,0.8;
 }
 
+/*contents of footer*/
+
+/*first column*/
 .column1{
-    margin-top: 5%;
-    width:385px;
-    height:200px;
+    width:35%;
+    font-size: 0.8em;
+    padding: 1rem;
 }
 
 .logo1{
-    width: 120px;
-    height:100px;
-    padding-bottom: 2%;
+    width:4rem;
+    object-fit: contain;
+    padding-bottom: 1%;
 }
 
-.colm{
-    margin-top: 5%;
-    
-
-}
-.column{
-    height: 172px;
-    gap: 32px;
+/*column 2 css*/
+.column2{
     display:flex;
     flex-direction: column;
-
+    font-size: 0.6em;
+    width:20%;
+    padding-top: 2rem;
 }
 
-.column h1{
-    font-size: 35px;
+.colm2_title{
+    font-size: 1.7em;
+}
+
+.contact-links{
+    padding-top: 0.5rem;
 }
 
 .contact-links p{
-    padding-bottom: 7px ;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
 }
 
-.contact-links a{
-    color:white;
-    padding-left: 5px;
-}
+/*social icons*/
 
-.loca{
-    width:25px;
-    height:17px;
-}
-
-.logo2{
-    width:140px;
-    height:36px;
-    top: 314.42px;
-    left: 165px;
-    gap: 16px;
+.social_logo{
     display: flex;
-    justify-content: center;
-    display: flex;
-
+    justify-content: flex-start;
 }
 
-.logo_desc{
-    padding-bottom: 4%;
+.social_logo img{
+    padding-top: 5px;
+    width:1.8rem;
+    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
-.tweet{
-    display: flex;
-    background-color: white;
-    width: 40px;
-    height: 30px;
-    border-radius: 30px;
-    align-items: center;
-    padding:3%;
+/*media queries*/
+ @media screen and (max-width:400px){
+    .column1{
+        font-size: 0.5em;
+    }
+    .colm2_title{
+    font-size: 1em;
 }
 
-.linked{
-    display: flex;
-    background-color: white;
-    width: 40px;
-    height: 30px;
-    border-radius: 30px;
-    align-items: center;
-    padding:3%;
+.contact-links p{
+    font-size: 0.5rem;
+    padding-right: 8px;
 }
-
-.yt{
-    display: flex;
-    background-color: white;
-    width: 40px;
-    height: 30px;
-    border-radius: 30px;
-    align-items: center;
-    padding:3%;
-}
-
+ }

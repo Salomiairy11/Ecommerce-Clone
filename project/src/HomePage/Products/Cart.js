@@ -6,7 +6,6 @@ export default function Cart({cart, setCart, handleChange})
     const [Price, setPrice]=React.useState(0);
 
 
-
     const handlePrice = () => {
       let ans = 0
       cart.map((item) => (ans += item.amount * item.price))
@@ -28,7 +27,7 @@ export default function Cart({cart, setCart, handleChange})
           <div className="cart_box" key={item.id}>
             <div className="cart_img">
               <img
-                src={`https://cdn.dummyjson.com/product-images/${item.id}/1.jpg`}
+                src={item.thumbnail}
               />
               <p className="cart_title">{item.title}</p>
             </div>
