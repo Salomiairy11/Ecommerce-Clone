@@ -1,9 +1,9 @@
 import React from 'react'
 import Nav from './HomePage/Navbar/Nav.js'
-import Slider from './HomePage/Products/Slider.js'
-import Products from './/HomePage/Products/Products.js'
+import Product from './HomePage/Products/Products.js'
 import Cart from './HomePage/Products/Cart.js'
 import Footer from './HomePage/Footer/Footer.js'
+import Slider from './HomePage/Products/Slider.js'
 import './App.css'
 
 export default function App() {
@@ -13,7 +13,6 @@ export default function App() {
   const [searchTerm, setSearchTerm] = React.useState('')
 
   const handleClick = (item) => {
-
     let isPresent = false
     cart.forEach((product) => {
       //checking if the id of the item which we  want to add to cart is already present in the cart state
@@ -26,7 +25,6 @@ export default function App() {
       }, 4000)
       return
     }
-    
 
     setCart([...cart, { ...item, amount: 1 }])
   }
@@ -55,13 +53,13 @@ export default function App() {
         searchTerm={searchTerm}
         searchHandler={searchHandler}
       />
+      <Slider />
       {warning && (
         <div className="warning">Item is already added to your cart</div>
       )}
-      <Slider />
       {show ? (
         <div>
-          <Products
+          <Product
             handleClick={handleClick}
             searchTerm={searchTerm}
             searchHandler={searchHandler}

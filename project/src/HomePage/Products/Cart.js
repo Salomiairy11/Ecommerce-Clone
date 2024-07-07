@@ -25,26 +25,28 @@ export default function Cart({cart, setCart, handleChange})
       <div className="Cart">
         {cart.map((item) => (
           <div className="cart_box" key={item.id}>
-            <div className="cart_img">
-              <img
-                src={item.thumbnail}
-              />
-              <p className="cart_title">{item.title}</p>
-            </div>
+              <img className="cart_img" src={item.thumbnail} />
             <div className="plus_minus">
-              <button className="plus" onClick={()=>handleChange(item, +1)}> + </button>
-              <button className="amount">{ item.amount}</button>
-              <button className="minus" onClick={()=>handleChange(item, -1)}> - </button>
+              <p className="cart_title">{item.title}</p>
+              <button className="plus" onClick={() => handleChange(item, +1)}>
+                +
+              </button>
+              <button className="amount">{item.amount}</button>
+              <button className="minus" onClick={() => handleChange(item, -1)}>
+                -
+              </button>
             </div>
             <div className="price">
               <span>{item.price}</span>
-              <button className="remove" onClick={()=>handleRemove(item.id)}>Remove</button>
+              <button className="remove" onClick={() => handleRemove(item.id)}>
+                Remove
+              </button>
             </div>
           </div>
         ))}
         <div className="total">
-          <span >Total Price of your Cart</span>
-          <span className="total_name" >Rs - {Price}</span>
+          <span>Total Price of your Cart</span>
+          <span className="total_name">Rs - {Price}</span>
         </div>
       </div>
     )

@@ -6,7 +6,7 @@ import IndividualFilteredProduct from './IndividualFilteredProduct.js'
 
 export default function Products({ handleClick, searchTerm }) {
   const [allProduct, setAllProduct] = React.useState([])
-  const [searchresults, setSearchResults] = React.useState('')
+  const [searchResults, setSearchResults] = React.useState('')
   const [categories, setCategories] = React.useState([])
 
   React.useEffect(() => {
@@ -15,7 +15,6 @@ export default function Products({ handleClick, searchTerm }) {
       .then((res) => res.json())
       .then((data) => {
         setAllProduct(data.products)
-
         // Extract categories
         const categorySet = new Set()
         data.products.forEach((product) => {
@@ -97,7 +96,7 @@ export default function Products({ handleClick, searchTerm }) {
             </div>
           </div>
         )}
-        {filteredProducts.length < 1 && searchresults.length < 1 && (
+        {filteredProducts.length < 1 && searchResults.length < 1 && (
           <div>
             <div className="elem">
               <div className="elem2">
@@ -111,15 +110,15 @@ export default function Products({ handleClick, searchTerm }) {
             </div>
           </div>
         )}
-        {searchresults.length > 1 && (
-          <div className="elem3">
-            {searchresults.map((card) => {
+        {searchResults.length > 1 && (
+        <div className="elem3">
+        <div className="search-elements">
+            {searchResults.map((card) => {
               return (
-                <div className="search_products">
                   <Card key={card.id} card={card} handleClick={handleClick} />
-                </div>
               )
             })}
+            </div>
           </div>
         )}
       </div>

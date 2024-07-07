@@ -1,110 +1,221 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Karla", sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Karla', sans-serif;
 }
 
-.nav{
-    padding: 1rem;
-    display: flex;
-    background-color: rgba(140, 212, 146, 0.678);
+/*nav bar main*/
+nav {
+  background-color: rgba(140, 212, 146, 0.678);
+  padding: 1rem;
 }
 
-.username{
-    border: none;
-    background-color: transparent;
-    color:rgba(77, 13, 13, 0.568);
-    font-weight: bold;
-    font-size: 1rem;
+.main_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.logo img{
-    width:30%;
-    object-fit: contain;
+.sidebar_toggle {
+  border: none;
+  cursor: pointer;
+  background: transparent;
 }
 
-.search_box input{
-    background-image: url('./navImages/search.png');
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: contain;
-    cursor: pointer;
+.sidebar_toggle img {
+  height: 18px;
+  width: 20px;
 }
 
-.search_container{
-    background-color: white;
-    border: 1px solid rgb(104, 155, 3);
-    border-radius: 9px;
-    display: flex;
-    justify-content: flex-end;
+.logo {
+  max-width: 13%;
+  object-fit: contain;
+  cursor: pointer;
 }
 
-.search_box img{
-    object-fit: contain;
-    border-radius: 7.5px;
+/*components under sidebar*/
+
+.username {
+  border: none;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
 }
 
-
-.right_nav{
-    display: flex;
-    align-items: center;
+.search_container {
+  width: 55%;
+  max-width:55%;
+  padding: 0.5rem;
+  background-color: white;
+  border: 1px solid rgb(104, 155, 3);
+  border-radius: 9px;
+  font-size: 0.5rem;
 }
 
-.my_orders{
-    border: none;
-    background-color: transparent;
-    color:rgba(77, 13, 13, 0.568);
-    font-weight: bolder;
-    font-size: medium;
-    padding-right: 20px;
-    cursor: pointer;
+.right_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.cart{
-    border:none;
-    background-color: transparent;
+.cart {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.3rem;
+  cursor: pointer;
 }
 
-.cart:hover{
-    border : 2px solid white;
-    border-radius: 9px;
+.cart .size {
+  margin-left: 5px;
+  background-color: #ff1a1a;
+  border-radius: 15px;
+  padding: 0.2rem;
 }
 
-.my_orders:hover{
-    border : 2px solid white;
-    border-radius: 9px;
+.cart:hover {
+  border: 2px solid white;
+  border-radius: 9px;
 }
 
-.right_nav img{
-    width:50px;
-    height:40px;
-    cursor: pointer;
+.my_orders:hover {
+  border: 2px solid white;
+  border-radius: 9px;
 }
 
-.logout{
-     background-color: rgba(9, 163, 9, 0.918);
-    color:white;
-    border: 0.5px solid white;
-    border-radius: 7px;
-    padding-left: 10px;
-    margin-left: 35px;
+.right_nav img {
+  width: 50px;
+  height: 40px;
+  cursor: pointer;
 }
 
-.size{
-    font-weight: bolder;
-    font-size: 1.1rem;
-    color:white;
-    background-color: red;
-    border-radius: 7px;
+.logout,
+.login {
+  background-color: rgb(228, 70, 22);
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  border-radius: 4px;
 }
 
-.sidebar_button{
-    background: transparent;
-    border:none;
+.logout:hover,
+.login:hover {
+  background-color: #ff1a1a;
 }
 
-.sidebar_button img{
-    height:18px;
-    width:20px;
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: rgba(33, 126, 42, 0.911);
+  color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.close_button {
+  background: white;
+  border-radius: 15px;
+  padding: 0.2rem;
+  margin-bottom: 0.6rem;
+  border: none;
+}
+.close_button img {
+  width: 50%;
+  cursor: pointer;
+}
+
+.bigscreen_nav{
+    display:none;
+}
+
+/*media queries*/
+
+@media screen and (min-width:600px){
+    .sidebar_toggle{
+        display:none;
+    }
+
+    nav{
+        padding:0.6rem;
+    }
+
+    .logo{
+        width:8%;
+    }
+
+    .search_container{
+        width:30%;
+        max-width: 30%;
+    }
+
+    .bigscreen_nav{
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+    }
+
+    .bigs_name{
+        font-size: 0.6rem;
+        margin: 0 1rem;
+    }
+
+    .bigs_cart{
+        margin: 0 1rem;
+        color:white;
+    }
+
+    .bigs_cart .fa-cart-plus{
+        margin-right: 0.3rem;
+    }
+
+    .bigs_size{
+        background-color: #ff1a1a;
+        border-radius: 15px;
+        padding: 0.1rem;
+    }
+
+    .bigs_logout{
+        background-color: rgb(10, 182, 67);
+        border: none;
+        color: #fff;
+        padding: 0.4rem 1rem;
+        cursor: pointer;
+        font-size: 0.7rem;
+        border-radius: 4px;
+    }
+
+}
+
+@media screen and (min-width:850px) {
+
+    .logo{
+        width:6%;
+    }
+
+    .bigs_name{
+        font-size: 0.8rem;
+        margin: 0 2rem;
+    }
+
+    .bigs_cart{
+        margin: 0 2rem;
+    }
+
+    .search_container{
+        padding: 0.8rem;
+        font-size: 0.6rem;
+    }
 }
